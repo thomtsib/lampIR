@@ -1,3 +1,7 @@
+#pragma region includes
+  #include <EEPROM.h>
+#pragma endregion
+
 #pragma region Declare Constants
   #pragma region Instructions
   /*
@@ -11,6 +15,9 @@
               4 --> IR learn mode
   */
   #pragma endregion
+
+  #pragma region 
+  #pragma endregion 
 
   #pragma region Buttons pins
   const int button1Pin = 0;
@@ -64,7 +71,6 @@
   }
 #pragma endregion
 
-
 #pragma region Methods
   void driveToEvent(){
     //all events shows to corresponding xlsx file
@@ -88,7 +94,7 @@
 
         break;
       case 6:
-
+        checkPushButtonAndLeds();
         break;
       case 7:
 
@@ -120,9 +126,11 @@
     }
   }
 
-  void changeIRState(){
+  void readEEPROM(){}
 
-  }
+  void writeEEPROM(){}
+
+  void changeIRState(){}
 
   void setButtonsStates(){
     button1State = digitalRead(button1State);
@@ -157,17 +165,41 @@
 		}
     #pragma endregion
 
+    #pragma region write to EEPROM
+    
+    #pragma endregion
+
+    #pragma region read to EEPROM
+    
+    #pragma endregion
+
     return response; 
   }
 
   void checkPushButtonAndLeds(){
-    // read the state of the pushbutton value:
-    button1State = digitalRead(button1Pin);
 
     if (button1State == HIGH) {
       digitalWrite(led1Pin, HIGH);
     } else {
       digitalWrite(led1Pin, LOW);
+    }
+
+    if (button2State == HIGH) {
+      digitalWrite(led2Pin, HIGH);
+    } else {
+      digitalWrite(led2Pin, LOW);
+    }
+
+    if (button3State == HIGH) {
+      digitalWrite(led3Pin, HIGH);
+    } else {
+      digitalWrite(led3Pin, LOW);
+    }
+
+    if (button4State == HIGH) {
+      digitalWrite(led4Pin, HIGH);
+    } else {
+      digitalWrite(led4Pin, LOW);
     }
   }
 #pragma endregion 
